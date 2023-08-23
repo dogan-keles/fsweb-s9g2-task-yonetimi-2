@@ -1,8 +1,13 @@
 import React from "react";
-import { differenceInDays } from "date-fns";
+import { differenceInDays, formatDistanceToNow } from "date-fns";
+import { tr } from "date-fns/locale";
 
 const Task = ({ taskObj, onComplete }) => {
   const diff = differenceInDays(new Date(taskObj.deadline), new Date());
+  const taskDeadline = formatDistanceToNow(new Date(taskObj.deadline), {
+    addSuffix: true,
+    locale: tr,
+  });
   console.log("diff", diff);
 
   return (
@@ -11,7 +16,7 @@ const Task = ({ taskObj, onComplete }) => {
       <div className="deadline">
         son teslim:{" "}
         <span style={{ backgroundColor: diff < 3 ? "tomato" : "gray" }}>
-          {taskObj.deadline}
+          {taskDeadline}
         </span>
       </div>
       <p>{taskObj.description}</p>
