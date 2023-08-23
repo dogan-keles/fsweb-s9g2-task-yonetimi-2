@@ -11,18 +11,19 @@ const Task = ({ taskObj, onComplete }) => {
   console.log("diff", diff);
 
   return (
-    <div className="task">
-      <h3>{taskObj.title}</h3>
+    <div className="p-6 bg-white rounded leading- 6 mt-4 shodow-md task">
+      <h3 className="text-lg leading-6 text-[#c8781a]">{taskObj.title}</h3>
       <div className="deadline">
         son teslim:{" "}
-        <span style={{ backgroundColor: diff < 3 ? "tomato" : "gray" }}>
-          {taskDeadline}
-        </span>
+        <span className={diff < 3 ? "bg-[#ffd9d4]" : ""}>{taskDeadline}</span>
       </div>
       <p>{taskObj.description}</p>
       <div>
         {taskObj.people.map((p) => (
-          <span className="pill" key={p}>
+          <span
+            className="inline-block py-2 px-3 border border-neutral-300 mr-1 mb-2 rounded-full pill"
+            key={p}
+          >
             {p}
           </span>
         ))}
